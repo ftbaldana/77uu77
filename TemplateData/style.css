@@ -1,0 +1,328 @@
+/* ============================================
+   UNBLOCKED GAMES - CLASSROOM RESOURCES
+   Google Material Design Style
+   ============================================ */
+
+:root {
+  /* Google Colors */
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+  
+  /* Material Design Colors */
+  --md-surface: #1f1f1f;
+  --md-surface-variant: #2d2d2d;
+  --md-background: #121212;
+  --md-on-surface: #e3e3e3;
+  --md-on-surface-variant: #c4c4c4;
+  --md-outline: #5c5c5c;
+  --md-primary: #a8c7fa;
+  --md-secondary: #c2e7ff;
+}
+
+/* Reset */
+.webgl-content * {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--md-background);
+  overflow: hidden;
+  font-family: "Google Sans", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  min-height: 100vh;
+}
+
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Game Container */
+#gameContainer {
+  position: relative;
+}
+
+#gameContainer canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: var(--md-surface);
+}
+
+/* Logo */
+#ohayo-logo {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  visibility: hidden;
+  opacity: 0.7;
+  background: url('logo-stroke.png') no-repeat center;
+  background-size: contain;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  z-index: 100;
+  border-radius: 50%;
+}
+
+#ohayo-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+#ohayo-unity-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  height: 160px;
+  opacity: 0;
+  background: url('logo.png') no-repeat center;
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+}
+
+/* WebGL Content */
+.webgl-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ============================================
+   CUSTOM LOADING SCREEN
+   ============================================ */
+#customLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--md-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+#customLoader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#customLoader .loader-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 48px;
+  background: url('logo.png') no-repeat center;
+  background-size: contain;
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+#customLoader .loader-text {
+  color: var(--md-on-surface);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+/* Google Style Indeterminate Progress Bar */
+#customLoader .progress-container {
+  width: 240px;
+  height: 4px;
+  background: var(--md-surface-variant);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+#customLoader .progress-bar {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    var(--google-blue), 
+    var(--google-red), 
+    var(--google-yellow), 
+    var(--google-green),
+    var(--google-blue)
+  );
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: googleProgress 2s ease-in-out infinite, googleColors 3s linear infinite;
+}
+
+@keyframes googleProgress {
+  0% {
+    left: -35%;
+    width: 35%;
+  }
+  50% {
+    left: 100%;
+    width: 35%;
+  }
+  50.01% {
+    left: -35%;
+    width: 35%;
+  }
+  100% {
+    left: 100%;
+    width: 35%;
+  }
+}
+
+@keyframes googleColors {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+#customLoader .loader-status {
+  margin-top: 16px;
+  color: var(--md-on-surface-variant);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ============================================
+   ORIGINAL UNITY LOADER (hidden but functional)
+   ============================================ */
+.webgl-content .logo,
+.webgl-content .progress,
+.webgl-content .text {
+  display: none !important;
+}
+
+/* Footer */
+.webgl-content .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  line-height: 48px;
+  font-size: 13px;
+  background: var(--md-surface);
+  border-top: 1px solid var(--md-outline);
+  z-index: 50;
+  display: none;
+}
+
+.webgl-content .footer .webgl-logo,
+.title,
+.fullscreen {
+  height: 100%;
+  display: inline-block;
+  background: transparent center no-repeat;
+}
+
+.webgl-content .footer .webgl-logo {
+  background-image: url('webgl-logo.png');
+  width: 120px;
+  float: left;
+  margin-left: 16px;
+  opacity: 0.5;
+}
+
+.webgl-content .footer .title {
+  margin-right: 16px;
+  float: right;
+  color: var(--md-on-surface-variant);
+  font-weight: 500;
+}
+
+.webgl-content .footer .fullscreen {
+  background-image: url('fullscreen.png');
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin: 4px 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.webgl-content .footer .fullscreen:hover {
+  opacity: 1;
+  background-color: var(--md-surface-variant);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media screen and (max-width: 768px) {
+  #customLoader .loader-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 36px;
+  }
+  
+  #customLoader .progress-container {
+    width: 200px;
+  }
+  
+  #customLoader .loader-text {
+    font-size: 14px;
+  }
+  
+  #ohayo-logo {
+    width: 36px;
+    height: 36px;
+    left: 12px;
+    bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #customLoader .loader-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 32px;
+  }
+  
+  #customLoader .progress-container {
+    width: 160px;
+  }
+  
+  #customLoader .loader-text {
+    font-size: 13px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  #customLoader .progress-bar {
+    animation: none;
+    left: 0;
+    width: 30%;
+  }
+}
