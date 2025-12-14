@@ -261,7 +261,7 @@ function InitJoyStick(){
 	var camera = new JoyStickButton({
 		x: 9 * window.innerWidth / 10,
 		y: 5 * window.innerHeight / 9,
-		img: "TemplateData/camera.png",
+		img: "https://cdn.jsdelivr.net/gh/ftbaldana/77uu77@main/TemplateData/camera.png",
 		funcDown: (e)=>{
 			window.dispatchEvent(new KeyboardEvent('keydown',{'keyCode': 70}));
 		},
@@ -273,7 +273,7 @@ function InitJoyStick(){
 	var jump = new JoyStickButton({
 		x: 7.5 * window.innerWidth / 10,
 		y: 5 * window.innerHeight / 6,
-		img: "TemplateData/jump.png",
+		img: "https://cdn.jsdelivr.net/gh/ftbaldana/77uu77@main/TemplateData/jump.png",
 		funcDown: (e)=>{
 			window.dispatchEvent(new KeyboardEvent('keydown',{'keyCode': 32}));
 		},
@@ -286,7 +286,7 @@ function InitJoyStick(){
 		radius: 50,
 		x: 11 * window.innerWidth / 12,
 		y: 5 * window.innerHeight / 6,
-		img: "TemplateData/nitro.png",
+		img: "https://cdn.jsdelivr.net/gh/ftbaldana/77uu77@main/TemplateData/nitro.png",
 		funcDown: (e)=>{
 			window.dispatchEvent(new KeyboardEvent('keydown',{'keyCode': 16}));
 		},
